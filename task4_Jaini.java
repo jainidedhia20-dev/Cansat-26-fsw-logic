@@ -23,6 +23,7 @@ if(current_alt>=10.0){
 flight_stage=1;
 System.out.println("Launch detected!");
 }
+}
 
 else if(flight_stage==1){
 if(current_alt<peak_alt){
