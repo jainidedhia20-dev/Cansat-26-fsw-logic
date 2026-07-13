@@ -18,7 +18,7 @@ if(current_alt>peak_alt){
 peak_alt=current_alt;
 }
 
-else if(flight_stage==0){
+if(flight_stage==0){
 if(current_alt>=10.0){
 flight_stage=1;
 System.out.println("Launch detected!");
