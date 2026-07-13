@@ -40,7 +40,7 @@ System.out.println("80% altitude reached!");
 }
 
 else if(flight_stage==3){
-if(current_alt<=2.0){
+if(current_alt<=2.0 && current_alt>0){
 flight_stage=4;
 System.out.println("2m above the ground!");
 }
