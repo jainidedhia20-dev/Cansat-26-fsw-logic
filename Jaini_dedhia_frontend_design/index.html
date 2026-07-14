@@ -1,120 +1,358 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dream Vacation Planner</title>
+    <title>DreamScape - Vacation Planner</title>
 
-<style>
+    <style>
 
-body{
-    font-family: Arial;
-    background-color: lightblue;
-}
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
 
-header{
-    background-color: darkblue;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
+        body{
+            background-color:#f4f4f4;
+        }
 
-nav{
-    background-color: skyblue;
-    text-align:center;
-    padding:10px;
-}
+        /* Header */
 
-nav a{
-    text-decoration:none;
-    margin:20px;
-    color:black;
-}
+        header{
+            background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+            background-size:cover;
+            background-position:center;
+            height:90vh;
+            color:white;
+            text-align:center;
+            padding-top:220px;
+        }
 
-.card{
-    border:1px solid black;
-    width:250px;
-    padding:10px;
-    margin:20px;
-    display:inline-block;
-    background-color:white;
-}
+        header h1{
+            font-size:60px;
+        }
 
-.card:hover{
-    background-color:lightyellow;
-}
+        header p{
+            font-size:22px;
+            margin-top:10px;
+        }
 
-form{
-    margin:20px;
-}
+        .hero-btn{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 25px;
+            background-color:#0077b6;
+            color:white;
+            text-decoration:none;
+            border-radius:5px;
+        }
 
-input{
-    margin:10px;
-}
+        .hero-btn:hover{
+            background-color:#023e8a;
+        }
 
-footer{
-    background-color:darkblue;
-    color:white;
-    text-align:center;
-    padding:10px;
-}
+        /* Section Heading */
 
-</style>
+        h2{
+            text-align:center;
+            margin:40px 0 20px;
+            color:#023e8a;
+        }
+
+        /* Destination Cards */
+
+        .container{
+            text-align:center;
+        }
+
+        .card{
+            width:280px;
+            background:white;
+            display:inline-block;
+            margin:15px;
+            border-radius:10px;
+            overflow:hidden;
+            box-shadow:0px 2px 8px gray;
+            transition:0.3s;
+        }
+
+        .card:hover{
+            transform:translateY(-8px);
+        }
+
+        .card img{
+            width:100%;
+            height:180px;
+        }
+
+        .card-content{
+            padding:15px;
+        }
+
+        .card-content h3{
+            margin-bottom:10px;
+        }
+
+        .explore-btn{
+            background-color:#0077b6;
+            color:white;
+            border:none;
+            padding:10px 15px;
+            border-radius:5px;
+            margin-top:10px;
+            cursor:pointer;
+        }
+
+        .explore-btn:hover{
+            background-color:#023e8a;
+        }
+
+        /* Travel Styles */
+
+        .style-box{
+            width:250px;
+            background:white;
+            display:inline-block;
+            margin:15px;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0px 2px 8px gray;
+            transition:0.3s;
+        }
+
+        .style-box:hover{
+            background-color:#caf0f8;
+        }
+
+        /* Checklist Button */
+
+        .checklist-btn{
+            display:block;
+            width:220px;
+            margin:40px auto;
+            text-align:center;
+            background-color:#0096c7;
+            color:white;
+            text-decoration:none;
+            padding:12px;
+            border-radius:5px;
+        }
+
+        .checklist-btn:hover{
+            background-color:#0077b6;
+        }
+
+        /* Popup */
+
+        .popup{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.7);
+            display:none;
+        }
+
+        .popup:target{
+            display:block;
+        }
+
+        .popup-content{
+            background:white;
+            width:300px;
+            margin:120px auto;
+            padding:20px;
+            border-radius:10px;
+        }
+
+        .close{
+            float:right;
+            text-decoration:none;
+            color:red;
+            font-size:22px;
+        }
+
+        .popup-content ul{
+            margin-top:20px;
+            padding-left:20px;
+        }
+
+        /* Contact Form */
+
+        form{
+            width:80%;
+            max-width:500px;
+            margin:30px auto;
+        }
+
+        input,
+        textarea{
+            width:100%;
+            padding:10px;
+            margin:10px 0;
+        }
+
+        .submit-btn{
+            background-color:#0077b6;
+            color:white;
+            border:none;
+            padding:10px;
+            cursor:pointer;
+        }
+
+        .submit-btn:hover{
+            background-color:#023e8a;
+        }
+
+        footer{
+            background:#023e8a;
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:30px;
+        }
+
+        /* Responsive */
+
+        @media(max-width:768px){
+
+            header h1{
+                font-size:40px;
+            }
+
+            .card,
+            .style-box{
+                width:90%;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<header>
-<h1>Dream Vacation Planner</h1>
-<p>Plan your perfect holiday</p>
-</header>
+    <header>
+        <h1>DreamScape</h1>
+        <p>Discover • Plan • Explore</p>
 
-<nav>
-<a href="#">Home</a>
-<a href="#">Destinations</a>
-<a href="#">Contact</a>
-</nav>
+        <a href="#destinations" class="hero-btn">
+            Explore Destinations
+        </a>
+    </header>
 
-<h2>Popular Destinations</h2>
+    <section id="destinations">
 
-<div class="card">
-<h3>Manali</h3>
-<p>Beautiful mountains and snowfall.</p>
-</div>
+        <h2>Popular Destinations</h2>
 
-<div class="card">
-<h3>Goa</h3>
-<p>Famous for beaches and fun activities.</p>
-</div>
+        <div class="container">
 
-<div class="card">
-<h3>Bali</h3>
-<p>Perfect tropical vacation destination.</p>
-</div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23">
+                <div class="card-content">
+                    <h3>Manali</h3>
+                    <p>Enjoy mountains, snowfall and adventure sports.</p>
+                    <button class="explore-btn">Explore More</button>
+                </div>
+            </div>
 
-<h2>Travel Checklist</h2>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2">
+                <div class="card-content">
+                    <h3>Goa</h3>
+                    <p>Relax on beautiful beaches and enjoy nightlife.</p>
+                    <button class="explore-btn">Explore More</button>
+                </div>
+            </div>
 
-<input type="checkbox"> Passport<br>
-<input type="checkbox"> Camera<br>
-<input type="checkbox"> Clothes<br>
-<input type="checkbox"> Tickets<br>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4">
+                <div class="card-content">
+                    <h3>Bali</h3>
+                    <p>Experience tropical beauty and peaceful resorts.</p>
+                    <button class="explore-btn">Explore More</button>
+                </div>
+            </div>
 
-<h2>Contact Us</h2>
+        </div>
 
-<form>
-Name:
-<input type="text"><br>
+    </section>
 
-Email:
-<input type="email"><br>
+    <section>
 
-Destination:
-<input type="text"><br>
+        <h2>Choose Your Travel Style</h2>
 
-<input type="submit">
-</form>
+        <div class="container">
 
-<footer>
-Dream Vacation Planner 2026
-</footer>
+            <div class="style-box">
+                <h3>🏔 Adventure Travel</h3>
+                <p>Trekking, rafting and thrilling experiences.</p>
+            </div>
+
+            <div class="style-box">
+                <h3>🏖 Beach Vacation</h3>
+                <p>Relax by the sea and enjoy the sunshine.</p>
+            </div>
+
+            <div class="style-box">
+                <h3>✨ Luxury Escape</h3>
+                <p>Premium hotels and unforgettable comfort.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <a href="#checklist" class="checklist-btn">
+        View Travel Checklist
+    </a>
+
+    <div id="checklist" class="popup">
+
+        <div class="popup-content">
+
+            <a href="#" class="close">&times;</a>
+
+            <h2>Travel Checklist</h2>
+
+            <ul>
+                <li>Passport</li>
+                <li>Tickets</li>
+                <li>Camera</li>
+                <li>Clothes</li>
+                <li>Power Bank</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <section>
+
+        <h2>Plan Your Dream Vacation</h2>
+
+        <form>
+
+            <input type="text" placeholder="Enter Your Name">
+
+            <input type="email" placeholder="Enter Your Email">
+
+            <input type="text" placeholder="Dream Destination">
+
+            <textarea placeholder="Tell us about your trip"></textarea>
+
+            <button class="submit-btn">
+                Submit
+            </button>
+
+        </form>
+
+    </section>
+
+    <footer>
+        DreamScape © 2026 | Made by Jaini Dedhia
+    </footer>
 
 </body>
 </html>
